@@ -11,39 +11,39 @@
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
-<title>Lista de Professores</title>
+<title>Lista de Alunos</title>
 </head>
 <body class="container">
-	<h1>Lista de Professores:</h1>
-	<a href="/Escola/Professor/AdicionarProf">Adicionar Professor</a>
+	<h1>Lista de Alunos:</h1>
+	<a href="/Escola/Alunos/AdicionarAluno">Adicionar Aluno</a>
 	<br>
 	<a href="javascript:history.back()">Voltar</a>
 	<hr>
 	<table class="table table-light table-striped">
 		<thead>
 			<tr>
-				<th scope="col">#ID</th>
+				<th scope="col">#RA</th>
 				<th scope="col">Nome</th>
 				<th scope="col">Email</th>
-				<th scope="col">Materia</th>
-				<th scope="col">Salario</th>
+				<th scope="col">Idade</th>
+				<th scope="col">Professor Responsavel</th>
 				<th scope="col"></th>
 				<th scope="col"></th>
 
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="prof : ${Lista}">
-				<th scope="row" th:text=${prof.getId()}></th>
-				<td scope="row" th:text="${prof.nome}"></td>
-				<td scope="row" th:text="${prof.email}"></td>
-				<td scope="row" th:text="${prof.materia}"></td>
-				<td scope="row" th:text="${prof.salario}"></td>
+			<tr th:each="aluno : ${Lista}">
+				<th scope="row" th:text=${aluno.getRa()}></th>
+				<td scope="row" th:text="${aluno.nome}"></td>
+				<td scope="row" th:text="${aluno.email}"></td>
+				<td scope="row" th:text="${aluno.Idade}"></td>
+				<td scope="row" th:text="${aluno.professorResponsavel.getNome()}"></td>
 				<td><a
-					th:href="@{/Escola/Professor/EditarPro/{id}(id=${prof.getId()})}"
+					th:href="@{/Escola/Alunos/EditarAluno/{id}(id=${aluno.getRa()})}"
 					th:method="get">Editar</a></td>
 				<td><a
-					th:href="@{/Escola/Professor/deletar/{id}(id=${prof.getId()})}"
+					th:href="@{/Escola/Alunos/deletarAluno/{id}(id=${aluno.getRa()})}"
 					th:method="delete">Deletar</a></td>
 
 			</tr>
