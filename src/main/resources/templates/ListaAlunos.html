@@ -17,7 +17,7 @@
 	<h1>Lista de Alunos:</h1>
 	<a href="/Escola/Alunos/AdicionarAluno">Adicionar Aluno</a>
 	<br>
-	<a href="javascript:history.back()">Voltar</a>
+	<a href="/">Voltar</a>
 	<hr>
 	<table class="table table-light table-striped">
 		<thead>
@@ -40,10 +40,10 @@
 				<td scope="row" th:text="${aluno.Idade}"></td>
 				<td scope="row" th:text="${aluno.professorResponsavel.getNome()}"></td>
 				<td><a
-					th:href="@{/Escola/Alunos/EditarAluno/{id}(id=${aluno.getRa()})}"
+					th:href="@{/Escola/Alunos/EditarAluno/{ra}(ra=${aluno.getRa()})}"
 					th:method="get">Editar</a></td>
 				<td><a
-					th:href="@{/Escola/Alunos/deletarAluno/{id}(id=${aluno.getRa()})}"
+					th:href="@{/Escola/Alunos/deletarAluno/{ra}(ra=${aluno.getRa()})}"
 					th:method="delete">Deletar</a></td>
 
 			</tr>

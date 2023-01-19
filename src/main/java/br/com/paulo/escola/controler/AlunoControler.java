@@ -49,21 +49,25 @@ public class AlunoControler {
 		return "ListaAlunos";
 	}
 	
-	@GetMapping(path = "/deletarAluno/{id}")
-	public String deletar(@PathVariable Integer id) {
-		repo.deleteById(id);
+	@GetMapping(path = "/deletarAluno/{ra}")
+	public String deletar(@PathVariable Integer ra) {
+		repo.deleteById(ra);
 		return "redirect:/Escola/Alunos/TodosAlunos";
 	}
 	
-	@GetMapping(path = "/EditarAluno/{id}")
-	public String viewEdit(@PathVariable Integer id, Model model) {
-		Optional<Aluno> aluno = repo.findById(id);
+	@GetMapping(path = "/EditarAluno/{ra}")
+	public String viewEdit(@PathVariable Integer ra, Model model) {
+		Optional<Aluno> aluno = repo.findById(ra);
+		
+		List<Professor> profs = profRepo.findAll();
+		model.addAttribute("profs", profs);
+		
 		model.addAttribute("aluno", aluno);
 		return "EditarAluno";
 	}
 	
-	@PostMapping(path = "/saveEditAluno/{id}")
-	public String salvar(@PathVariable Integer id, @Validated Aluno aluno ) {
+	@PostMapping(path = "/saveEditAluno/{ra}")
+	public String salvar(@PathVariable Integer ra, @Validated Aluno aluno ) {
 		repo.save(aluno);
 		return "redirect:/Escola/Alunos/TodosAlunos";
 	}
