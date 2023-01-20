@@ -45,12 +45,13 @@ public class ProfessorControler {
 
 	@GetMapping(path = "/deletar/{id}")
 	public String deletar(@PathVariable Integer id) {
-		/* try { */
+		try {
 			profRepo.deleteById(id);
 			return "redirect:/Escola/Professor/TodosProfs";
-		/*} catch (Exception e) {
-			return "ERROR";
-		}*/
+		}catch (Exception e) {
+			return "Erro";
+		}
+		
 	}
 
 	@GetMapping(path = "/EditarPro/{id}")
