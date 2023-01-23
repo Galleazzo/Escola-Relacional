@@ -1,11 +1,16 @@
 package br.com.paulo.escola.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
 import br.com.paulo.escola.model.enun.Materia;
 
@@ -23,17 +28,24 @@ public class Professor {
 	@Enumerated(EnumType.STRING)
     private Materia materia;
 	
+	/*
+	 * @OneToMany
+	 * 
+	 * @JoinColumn(name = "qtdalunos", referencedColumnName="aluno_ra") private Long
+	 * qtdAlunos;
+	 */
 	
 	public Professor() {
 		
 	}
-
-	public Professor(String nome, String email, Materia materia, Double salario) {
+	
+	public Professor(String nome, String email, Double salario, Materia materia) {
 		super();
 		this.nome = nome;
 		this.email = email;
-		this.materia = materia;
 		this.salario = salario;
+		this.materia = materia;
+		/* this.qtdAlunos = qtdAlunos; */
 	}
 
 	public Integer getId() {
@@ -75,10 +87,11 @@ public class Professor {
 	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
-	
-	
-	
-	
-	
+
+	/*
+	 * public Long getQtdAlunos() { return qtdAlunos; }
+	 * 
+	 * public void setQtdAlunos(Long qtdAlunos) { this.qtdAlunos = qtdAlunos; }
+	 */
 
 }

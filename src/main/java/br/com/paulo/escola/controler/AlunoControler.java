@@ -31,6 +31,7 @@ public class AlunoControler {
 	@GetMapping(path = "/AdicionarAluno")
 	public String newPro(Model model) {
 		List<Professor> profs = profRepo.findAll();
+		
 		model.addAttribute("profs", profs);
 		return "NovoAluno";
 	}
